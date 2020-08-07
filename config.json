@@ -1,0 +1,172 @@
+{
+    "data": {
+        "src_dir": "data/",
+        "shuffle": "True",
+        "num_workers": 8,
+        "num_classes": 10,
+        "batch_size": 128
+    },
+    "grad_clip": 5.0,
+    "loss": {
+        "softmax": {
+            "w_norm": "False",
+            "x_norm": "False",
+            "s": 1,
+            "m1": 1,
+            "m2": 0,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.01,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        },
+        "L-softmax_v1": {
+            "w_norm": "False",
+            "x_norm": "False",
+            "s": 1,
+            "m1": 2,
+            "m2": 0,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 4,
+                "gamma": 0.5
+            }
+        },
+        "L-softmax_v2": {
+            "w_norm": "False",
+            "x_norm": "False",
+            "s": 1,
+            "m1": 3,
+            "m2": 0,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 4,
+                "gamma": 0.5
+            }
+        },
+        "A-softmax_v1": {
+            "w_norm": "True",
+            "x_norm": "False",
+            "s": 1,
+            "m1": 2,
+            "m2": 0,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 4,
+                "gamma": 0.5
+            }
+        },
+        "A-softmax_v2": {
+            "w_norm": "True",
+            "x_norm": "False",
+            "s": 1,
+            "m1": 3,
+            "m2": 0,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 4,
+                "gamma": 0.5
+            }
+        },
+        "norm-softmax": {
+            "w_norm": "True",
+            "x_norm": "True",
+            "s": 1,
+            "m1": 1,
+            "m2": 0,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        },
+        "CosFace_v1": {
+            "w_norm": "True",
+            "x_norm": "True",
+            "s": 4,
+            "m1": 1,
+            "m2": 0,
+            "m3": 0.1,
+            "optimizer": {
+                "lr": 0.01,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        },
+        "CosFace_v2": {
+            "w_norm": "True",
+            "x_norm": "True",
+            "s": 4,
+            "m1": 1,
+            "m2": 0,
+            "m3": 0.2,
+            "optimizer": {
+                "lr": 0.01,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        },
+        "ArcFace_v1": {
+            "w_norm": "True",
+            "x_norm": "True",
+            "s": 4,
+            "m1": 1,
+            "m2": 0.1,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.0001,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.5
+            }
+        },
+        "ArcFace_v2": {
+            "w_norm": "True",
+            "x_norm": "True",
+            "s": 4,
+            "m1": 1,
+            "m2": 0.4,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        },
+        "ArcFace_v3": {
+            "w_norm": "True",
+            "x_norm": "True",
+            "s": 1,
+            "m1": 1,
+            "m2": 0.1,
+            "m3": 0,
+            "optimizer": {
+                "lr": 0.001,
+                "momentum": 0.9,
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        }
+    },
+    "training": {
+        "checkpoints_dir": "weights",
+        "log_dir": "logs",
+        "log_interval": 100,
+        "n_epoch": 20
+    }
+}
