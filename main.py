@@ -58,6 +58,7 @@ def main():
     )
     # model
     loss_cnf = cnfs["loss"][args.lossname]
+    print(loss_cnf)
     if args.basemodel == 'LeNet_pp':
         encoder = LeNet_pp(out_features=args.visual_dimension)
     else:
@@ -66,8 +67,8 @@ def main():
     angleLinear = AngleLinear(
                                 in_features=args.visual_dimension, 
                                 out_features=cnfs["data"]["num_classes"],
-                                w_norm=loss_cnf["w_norm"],
-                                x_norm=loss_cnf["x_norm"],
+                                w_norm=loss_cnf["w_norm"]=="True",
+                                x_norm=loss_cnf["x_norm"]=="True",
                                 s=loss_cnf["s"],
                                 m1=loss_cnf["m1"],
                                 m2=loss_cnf["m2"],

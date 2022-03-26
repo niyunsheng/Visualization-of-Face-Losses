@@ -51,14 +51,14 @@ We use the SGD optimizer and train 20 epoches for each loss. The acc is below.
 
 | loss name    | test acc |
 | ---------    | ------ |
-| softmax      | 92.95 |
-| norm-softmax | 89.91 |
-| L-softmax_v1 | 63.50 |
-| A-softmax_v1 | 73.88 |
-| CosFace_v1   | 98.69 |
-| ArcFace_v1   | 98.50 |
-| ArcFace_v2   | 98.45 |
-| ArcFace_v3   | 76.60 |
+| softmax      | 98.88 |
+| norm-softmax | 96.25 |
+| L-softmax_v1 | 81.52 |
+| A-softmax_v1 | 86.53 |
+| CosFace_v1   | 98.44 |
+| ArcFace_v1   | 98.22 |
+| ArcFace_v2   | 98.52 |
+| ArcFace_v3   | 75.31 |
 
 > `Nan` means that I haven’t trained with similar results because the encode spatial dimension is too low.
 
@@ -67,11 +67,11 @@ We use the SGD optimizer and train 20 epoches for each loss. The acc is below.
 
 | loss name | test for best epoch |
 | - | - |
-| softmax | ![image](images/softmax_test_epoch_09.png) |
-| norm-softmax | ![image](images/norm-softmax_test_epoch_06.png) |
-| L-softmax_v1 | ![image](images/L-softmax_v1_test_epoch_02.png) |
-| A-softmax_v1 | ![image](images/A-softmax_v1_test_epoch_01.png) |
+| softmax | ![image](images/softmax_test_epoch_14.png) |
+| norm-softmax | ![image](images/norm-softmax_test_epoch_04.png) |
+| L-softmax_v1 | ![image](images/L-softmax_v1_test_epoch_09.png) |
+| A-softmax_v1 | ![image](images/A-softmax_v1_test_epoch_04.png) |
 | CosFace_v1   | ![image](images/CosFace_v1_test_epoch_19.png) |
-| ArcFace_v1   | ![image](images/ArcFace_v1_test_epoch_16.png) |
+| ArcFace_v1   | ![image](images/ArcFace_v1_test_epoch_17.png) |
 | ArcFace_v2   | ![image](images/ArcFace_v2_test_epoch_17.png) |
-| ArcFace_v3   | ![image](images/ArcFace_v3_test_epoch_04.png) |
+| ArcFace_v3   | ![image](images/ArcFace_v3_test_epoch_00.png) |

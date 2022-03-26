@@ -178,6 +178,7 @@ class AngleLinear(nn.Module):
             lambda x: 8*x**4-8*x**2+1,
             lambda x: 16*x**5-20*x**3+5*x
         ]
+        print("#",self.w_norm,self.x_norm)
 
     def forward(self, x, label=None):
         """module forward
@@ -217,8 +218,8 @@ class AngleLinear(nn.Module):
             one_hot.scatter_(1, label.view(-1, 1).long(), 1)
             output = (one_hot * phi) + ((1.0 - one_hot) * cosine)
             if not self.x_norm:
-                output *= x.pow(2).sum(1,keepdim=True).sqrt()
+                output = torch.mul(output, x.pow(2).sum(1,keepdim=True).sqrt())
             if not self.w_norm:
-                output *= self.weight.pow(2).sum(1,keepdim=True).sqrt()
+                output = torch.mul(output, self.weight.pow(2).sum(1,keepdim=False).sqrt().view(1,-1))
         output *= self.s
         return output
