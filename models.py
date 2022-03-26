@@ -179,7 +179,7 @@ class AngleLinear(nn.Module):
             lambda x: 16*x**5-20*x**3+5*x
         ]
 
-    def forward(self, x, label):
+    def forward(self, x, label=None):
         """module forward
 
         Args:
@@ -189,18 +189,21 @@ class AngleLinear(nn.Module):
         Returns:
             A Tensor which shape is (batch_size, out_features)
         """
-        if self.m1 == 1 and self.m2 == 0 and self.m3 == 0:
-            if self.x_norm:
-                x = F.normalize(x)
-            if self.w_norm:
-                W = F.normalize(self.weight)
-            else:
-                W = self.weight
-            output = F.linear(x, W)
-        else:
+        if self.x_norm:
             x = F.normalize(x)
+        if self.w_norm:
             W = F.normalize(self.weight)
+        else:
+            W = self.weight
+        output = F.linear(x, W)
+        if label is not None and not (self.m1 == 1 and self.m2 == 0 and self.m3 == 0):
+            if not self.x_norm:
+                x = F.normalize(x)
+            if not self.w_norm:
+                W = F.normalize(self.weight)
             cosine = F.linear(x, W)
+            cosine[cosine>0.99] = 0.99
+            cosine[cosine<-0.99] = -0.99
             assert self.m1 <= 5
             phi =self.m1_lambda[self.m1](cosine)
             if self.m2 != 0:
@@ -213,9 +216,9 @@ class AngleLinear(nn.Module):
             one_hot = torch.zeros(cosine.size(), device=self.device)
             one_hot.scatter_(1, label.view(-1, 1).long(), 1)
             output = (one_hot * phi) + ((1.0 - one_hot) * cosine)
-            output *= self.s
             if not self.x_norm:
                 output *= x.pow(2).sum(1,keepdim=True).sqrt()
             if not self.w_norm:
                 output *= self.weight.pow(2).sum(1,keepdim=True).sqrt()
+        output *= self.s
         return output

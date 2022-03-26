@@ -7,6 +7,7 @@
         "batch_size": 128
     },
     "grad_clip": 5.0,
+    "lr": 0.001,
     "loss": {
         "softmax": {
             "w_norm": "False",
@@ -14,13 +15,7 @@
             "s": 1,
             "m1": 1,
             "m2": 0,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.01,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.1
-            }
+            "m3": 0
         },
         "L-softmax_v1": {
             "w_norm": "False",
@@ -28,13 +23,7 @@
             "s": 1,
             "m1": 2,
             "m2": 0,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 4,
-                "gamma": 0.5
-            }
+            "m3": 0
         },
         "L-softmax_v2": {
             "w_norm": "False",
@@ -42,13 +31,7 @@
             "s": 1,
             "m1": 3,
             "m2": 0,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 4,
-                "gamma": 0.5
-            }
+            "m3": 0
         },
         "A-softmax_v1": {
             "w_norm": "True",
@@ -56,13 +39,7 @@
             "s": 1,
             "m1": 2,
             "m2": 0,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 4,
-                "gamma": 0.5
-            }
+            "m3": 0
         },
         "A-softmax_v2": {
             "w_norm": "True",
@@ -70,13 +47,7 @@
             "s": 1,
             "m1": 3,
             "m2": 0,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 4,
-                "gamma": 0.5
-            }
+            "m3": 0
         },
         "norm-softmax": {
             "w_norm": "True",
@@ -84,13 +55,7 @@
             "s": 1,
             "m1": 1,
             "m2": 0,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.1
-            }
+            "m3": 0
         },
         "CosFace_v1": {
             "w_norm": "True",
@@ -101,9 +66,7 @@
             "m3": 0.1,
             "optimizer": {
                 "lr": 0.01,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.1
+                "momentum": 0.9
             }
         },
         "CosFace_v2": {
@@ -115,9 +78,7 @@
             "m3": 0.2,
             "optimizer": {
                 "lr": 0.01,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.1
+                "momentum": 0.9
             }
         },
         "ArcFace_v1": {
@@ -126,41 +87,23 @@
             "s": 4,
             "m1": 1,
             "m2": 0.1,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.0001,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.5
-            }
+            "m3": 0
         },
         "ArcFace_v2": {
             "w_norm": "True",
             "x_norm": "True",
             "s": 4,
             "m1": 1,
-            "m2": 0.4,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.1
-            }
+            "m2": 0.2,
+            "m3": 0
         },
         "ArcFace_v3": {
             "w_norm": "True",
             "x_norm": "True",
             "s": 1,
             "m1": 1,
-            "m2": 0.1,
-            "m3": 0,
-            "optimizer": {
-                "lr": 0.001,
-                "momentum": 0.9,
-                "step_size": 5,
-                "gamma": 0.1
-            }
+            "m2": 0.3,
+            "m3": 0
         }
     },
     "training": {

@@ -12,7 +12,7 @@ The CNNs Architectures is sample. Visit the paper CenterLoss Table 1 for more de
 
 ![](images/LeNet++.png)
 
-I also complete a mini resnet18 model, see `model.py` for more details.
+I also complete a mini resnet18 model (used as default), see `model.py` for more details.
 
 You can change the command line parameters to select different models.
 
@@ -29,10 +29,10 @@ To make it more universal, the module `AngleLinear` has some parameters to prese
 | loss name    | w_norm | x_norm | s | m1 | m2  | m3 |
 | ---------    | ------ | ------ | - | -- | --  | -- |
 | softmax      | False  | False  | 1 | 1  | 0   | 0  |
+| norm-softmax | True   | True   | 1 | 1  | 0   | 0  |
 | L-softmax_v1 | False  | False  | 1 | 2  | 0   | 0  |
 | A-softmax_v1 | True   | False  | 1 | 2  | 0   | 0  |
 | A-softmax_v2 | True   | False  | 1 | 3  | 0   | 0  |
-| norm-softmax | True   | True   | 1 | 1  | 0   | 0  |
 | CosFace_v1   | True   | True   | 4 | 1  | 0   | 0.1|
 | CosFace_v2   | True   | True   | 4 | 1  | 0   | 0.2|
 | ArcFace_v1   | True   | True   | 4 | 1  | 0.1 | 0  |
@@ -49,99 +49,29 @@ To make it more universal, the module `AngleLinear` has some parameters to prese
 
 We use the SGD optimizer and train 20 epoches for each loss. The acc is below.
 
-| loss name    | train acc | test acc |
-| ---------    | ----- | ----- |
-| softmax      | 93.34 | 94.65 |
-| L-softmax_v1 | 93.79 | 92.92 |
-| A-softmax_v1 | 94.12 | 94.07 |
-| norm-softmax | 91.65 | 92.37 |
-| CosFace_v1   | 95.52 | 96.32 |
-| ArcFace_v1   | Nan   | Nan   |
-| ArcFace_v2   | Nan   | Nan   |
-| ArcFace_v3   | Nan   | Nan   |
+| loss name    | test acc |
+| ---------    | ------ |
+| softmax      | 92.95 |
+| norm-softmax | 89.91 |
+| L-softmax_v1 | 63.50 |
+| A-softmax_v1 | 73.88 |
+| CosFace_v1   | 98.69 |
+| ArcFace_v1   | 98.50 |
+| ArcFace_v2   | 98.45 |
+| ArcFace_v3   | 76.60 |
 
 > `Nan` means that I haven’t trained with similar results because the encode spatial dimension is too low.
 
 ## Visualization
 
-### softmax
 
-| train gif | train end |
+| loss name | test for best epoch |
 | - | - |
-| ![image](images/softmax_train.gif) | ![image](images/softmax_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/softmax_test.gif) | ![image](images/softmax_test_epoch19.png) |
-
-### L-softmax_v1
-
-| train gif | train end |
-| - | - |
-| ![image](images/L-softmax_v1_train.gif) | ![image](images/L-softmax_v1_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/L-softmax_v1_test.gif) | ![image](images/L-softmax_v1_test_epoch19.png) |
-
-### A-softmax_v1
-
-| train gif | train end |
-| - | - |
-| ![image](images/A-softmax_v1_train.gif) | ![image](images/A-softmax_v1_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/A-softmax_v1_test.gif) | ![image](images/A-softmax_v1_test_epoch19.png) |
-
-
-### norm-softmax
-
-| train gif | train end |
-| - | - |
-| ![image](images/norm-softmax_train.gif) | ![image](images/norm-softmax_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/norm-softmax_test.gif) | ![image](images/norm-softmax_test_epoch19.png) |
-
-### CosFace_v1
-
-| train gif | train end |
-| - | - |
-| ![image](images/CosFace_v1_train.gif) | ![image](images/CosFace_v1_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/CosFace_v1_test.gif) | ![image](images/CosFace_v1_test_epoch19.png) |
-
-
-### ArcFace_v1
-
-<!-- | train gif | train end |
-| - | - |
-| ![image](images/ArcFace_v1_train.gif) | ![image](images/ArcFace_v1_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/ArcFace_v1_test.gif) | ![image](images/ArcFace_v1_test_epoch19.png) | -->
-
-### ArcFacev2
-
-<!-- | train gif | train end |
-| - | - |
-| ![image](images/ArcFace_v2_train.gif) | ![image](images/ArcFace_v2_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/ArcFace_v2_test.gif) | ![image](images/ArcFace_v2_test_epoch19.png) | -->
-
-### ArcFace_v3
-
-<!-- | train gif | train end |
-| - | - |
-| ![image](images/ArcFace_v3_train.gif) | ![image](images/ArcFace_v3_train_epoch19.png) |
-
-| test gif | test end |
-| - | - |
-| ![image](images/ArcFace_v3_test.gif) | ![image](images/ArcFace_v3_test_epoch19.png) | -->
+| softmax | ![image](images/softmax_test_epoch_09.png) |
+| norm-softmax | ![image](images/norm-softmax_test_epoch_06.png) |
+| L-softmax_v1 | ![image](images/L-softmax_v1_test_epoch_02.png) |
+| A-softmax_v1 | ![image](images/A-softmax_v1_test_epoch_01.png) |
+| CosFace_v1   | ![image](images/CosFace_v1_test_epoch_19.png) |
+| ArcFace_v1   | ![image](images/ArcFace_v1_test_epoch_16.png) |
+| ArcFace_v2   | ![image](images/ArcFace_v2_test_epoch_17.png) |
+| ArcFace_v3   | ![image](images/ArcFace_v3_test_epoch_04.png) |
