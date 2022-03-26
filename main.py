@@ -77,6 +77,8 @@ def main():
                                 )
     angleLinear = angleLinear.to(device)
     criterion = nn.CrossEntropyLoss()
+    # from losses import SinglePolarLoss
+    # criterion = SinglePolarLoss(num_classes=10)
 
     # optimizer
     optimizer = optim.Adam([
@@ -116,11 +118,12 @@ def main():
             x_i = features[:,0][labels==i]
             y_i = features[:,1][labels==i]
             plt.scatter(x_i,y_i,s=1,c=colors[i])
-        plt.legend(['num_'+str(i) for i in range(10)], loc = 'upper right')
+        plt.axis('off')
+        # plt.legend(['num_'+str(i) for i in range(10)], loc = 'upper right')
         for i in range(10):
             plt.annotate(str(i),xy=(0,0),xytext=(w[i][0],w[i][1]),arrowprops=dict(arrowstyle="<-",connectionstyle="arc3"))
-        plt.title(title)
-        plt.savefig(os.path.join('weights', args.lossname, title + '.png'))
+        # plt.title(title)
+        plt.savefig(os.path.join('weights', args.lossname, title + '.png'), dpi=300)
 
     # clip_gradient
     def clip_gradient(optimizer, grad_clip):
@@ -243,13 +246,13 @@ def main():
             torch.save(state, os.path.join(checkpoints_dir,'{}_epoch_{}_acc_{}.pth'.format(args.lossname,epoch_id,acc)))
             best_acc = acc
 
-            # plot and save feature distribution
-            title = '{}_test_epoch_{:02}'.format(args.lossname, epoch_id)
-            print(title)
-            w = angleLinear.weight.cpu().detach().numpy()
-            plot_features = np.concatenate(plot_features)
-            plot_labels = np.concatenate(plot_labels)
-            visualization(plot_features, plot_labels, w, title)
+        # plot and save feature distribution
+        title = '{}_test_epoch_{:02}'.format(args.lossname, epoch_id)
+        print(title)
+        w = angleLinear.weight.cpu().detach().numpy()
+        plot_features = np.concatenate(plot_features)
+        plot_labels = np.concatenate(plot_labels)
+        visualization(plot_features, plot_labels, w, title)
 
     for epoch_id in range(0,cnfs["training"]["n_epoch"]):
         print('*'*10,' epoch ',epoch_id,'\t','*'*10,)
